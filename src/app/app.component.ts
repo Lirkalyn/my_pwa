@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   hello$ = this.httpClient.get('api/hello', { responseType: 'text' });
-  constructor(private httpClient: HttpClient) {}
+  updateAvailable$ = this.swUpdate.available;
+
+  constructor(private httpClient: HttpClient,
+    private swUpdate: SwUpdate) {}
+    async update() {
+      await this.swUpdate.activateUpdate();
+      document.location.reload();
+    }
 }
 //export class AppComponent {
 //  title = 'my-pwa';

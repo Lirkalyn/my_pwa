@@ -1,1 +1,9 @@
 Message: {{ hello$ | async }}
+<p *ngIf="updateAvailable$ | async; else noUpdate">
+  An update is available!
+  Click here to apply:
+  <button (click)="update()">Update</button>
+</p>
+<ng-template #noUpdate>
+  <p>No update available.</p>
+</ng-template>
