@@ -32,7 +32,7 @@
       "urls": ["/api/hello"],
       "cacheConfig": {
         "maxSize": 1,
-        "maxAge": "1m",
+        "maxAge": "31d",
         "strategy": "freshness"
       }
     }
